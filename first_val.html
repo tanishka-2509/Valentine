@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+        overflow: hidden;
+        color: white;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.15);
+        backdrop-filter: blur(12px);
+        padding: 40px;
+        border-radius: 25px;
+        text-align: center;
+        width: 350px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 15px 35px;
+        font-size: 18px;
+        border-radius: 30px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: white;
+        color: #ff4d6d;
+        box-shadow: 0 10px 25px rgba(255,255,255,0.6);
+        transition: transform 0.3s;
+    }
+
+    #yes:hover {
+        transform: scale(1.1);
+    }
+
+    #no {
+        background: #ff4d6d;
+        color: white;
+        position: absolute;
+        pointer-events: none; /* ❌ NOT clickable */
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button id="yes" onclick="goNext()">YES 💕</button>
+</div>
+
+<button id="no">NO 🙈</button>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    document.addEventListener("mousemove", (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+
+        const btnX = noBtn.offsetLeft;
+        const btnY = noBtn.offsetTop;
+
+        const distance = Math.hypot(mouseX - btnX, mouseY - btnY);
+
+        if (distance < 120) {
+            const x = Math.random() * (window.innerWidth - 120);
+            const y = Math.random() * (window.innerHeight - 60);
+
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+    });
+
+    // Initial random position
+    noBtn.style.left = Math.random() * 300 + "px";
+    noBtn.style.top = Math.random() * 200 + "px";
+
+    function goNext() {
+        window.location.href = "second_val.html";
+    }
+</script>
+
+</body>
+</html>
